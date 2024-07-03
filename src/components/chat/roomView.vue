@@ -130,7 +130,7 @@ const handleJoin = async function (target) {
     socket.MessageCreator.sendOffer(name, target, offer)
 }
 const handleOffer = async function (target, offer) {
-    await yourConn.setRemoteDescription(new RTCSessionDescription(offer));
+    yourConn.setRemoteDescription(new RTCSessionDescription(offer));
     let answer = await yourConn.createAnswer();
     yourConn.setLocalDescription(answer)
     socket.MessageCreator.sendAnswer(name, target, answer)
