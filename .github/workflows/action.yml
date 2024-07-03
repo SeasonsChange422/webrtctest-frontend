@@ -42,8 +42,8 @@ jobs:
           username: ${{ secrets.HOST_USERNAME }}
           password: ${{ secrets.HOST_PASSWORD }}
           script: |
-            docker stop CHATWEB || true
-            docker rm CHATWEB || true
+            docker stop webrtctestFrontContainer || true
+            docker rm webrtctestFrontContainer || true
             docker rmi $(docker images seasonschange422/webrtctest-front -q) || true
             sleep 3
             docker pull https://registry.docker-cn.com/seasonschange422/webrtctest-front
