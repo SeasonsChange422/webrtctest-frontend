@@ -125,21 +125,21 @@ function initWebRTC() {
 const handleJoin = async function (target) {
     targetUser = target
     let offer = await yourConn.createOffer()
-    await yourConn.setLocalDescription(offer)
+    yourConn.setLocalDescription(offer)
     console.log("offer:",offer,yourConn.localDescription)
     socket.MessageCreator.sendOffer(name, target, offer)
 }
 const handleOffer = async function (target, offer) {
     await yourConn.setRemoteDescription(new RTCSessionDescription(offer.sdp));
     let answer = await yourConn.createAnswer();
-    await yourConn.setLocalDescription(answer)
+    yourConn.setLocalDescription(answer)
     socket.MessageCreator.sendAnswer(name, target, answer)
 }
 const handleAnswer = function (answer) {
     yourConn.setRemoteDescription(new RTCSessionDescription(answer.sdp));
 }
 const handleCandidate = async function(candidate) {
-    await yourConn.addIceCandidate(new RTCIceCandidate(candidate))
+    yourConn.addIceCandidate(new RTCIceCandidate(candidate))
 }
 initWebRTC()
 setTimeout(() => {
