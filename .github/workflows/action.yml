@@ -1,8 +1,5 @@
 name: Build and Deploy chatgptui
 
-environment:
-  name: WEBRTC_TEST
-
 on:
   pull_request:
     branches:
@@ -11,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    environment:
+      name: WEBRTC_TEST
 
     steps:
       - name: Checkout code
