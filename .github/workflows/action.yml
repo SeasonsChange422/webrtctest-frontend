@@ -42,9 +42,9 @@ jobs:
           username: ${{ secrets.HOST_USERNAME }}
           password: ${{ secrets.HOST_PASSWORD }}
           script: |
-            docker stop webrtctestFrontContainer || true
-            docker rm webrtctestFrontContainer || true
+            docker stop webrtctestFrontendContainer || true
+            docker rm webrtctestFrontendContainer || true
             docker rmi $(docker images seasonschange422/webrtctest-front -q) || true
             sleep 3
             docker pull https://registry.docker-cn.com/seasonschange422/webrtctest-front
-            docker run --name webrtctestFrontContainer -d -p 0.0.0.0:3000:3000 seasonschange422/webrtctest-front
+            docker run --name webrtctestFrontendContainer -d -p 0.0.0.0:3000:3000 seasonschange422/webrtctest-front
