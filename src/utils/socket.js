@@ -5,7 +5,7 @@
  * @FilePath: \vuetify-project\src\utils\socket.js
  */
 
-let remoteAddress = "ws://localhost:8001/websocket-server"
+let remoteAddress = "ws://116.205.236.94:8001/websocket-server"
 let socket = {}
 let initSocket = () => {
     socket = new WebSocket(remoteAddress)
