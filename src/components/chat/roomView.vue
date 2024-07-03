@@ -138,7 +138,7 @@ const handleOffer = async function (target, offer) {
 const handleAnswer = function (answer) {
     yourConn.setRemoteDescription(new RTCSessionDescription(answer.sdp));
 }
-const handleCandidate = function(candidate) {
+const handleCandidate = async function(candidate) {
     await yourConn.addIceCandidate(new RTCIceCandidate(candidate))
 }
 initWebRTC()
