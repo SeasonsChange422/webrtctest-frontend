@@ -74,7 +74,7 @@ function initWebRTC() {
                 // {
                 //     'urls': 'stun:stun.l.google.com:19302'
                 // },
-                { urls: "stun:43.138.140.21" }
+                // { urls: "stun:43.138.140.21" }
                 // {urls:"turn:turn.wildfirechat.cn:3478",username:"wfchat",credential:"wfchat1"}
             ]
         };
