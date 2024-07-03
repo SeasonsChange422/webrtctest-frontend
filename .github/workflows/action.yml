@@ -36,7 +36,7 @@ jobs:
       - name: SSH into server and deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ WEBRTC_TEST.HOST_ID }}
+          host: ${{ secrets.HOST_ID }}
           username: ${{ secrets.HOST_USERNAME }}
           password: ${{ secrets.HOST_PASSWORD }}
           script: |
