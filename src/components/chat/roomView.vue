@@ -71,9 +71,9 @@ function initWebRTC() {
         //using Google public stun server,turn中继服务器需要自己搭建，可参考网上coturn搭建教程
         var configuration = {
             iceServers: [
-                {
-                    'urls': 'stun:stun.l.google.com:19302'
-                },
+                // {
+                //     'urls': 'stun:stun.l.google.com:19302'
+                // },
                 { "urls": "stun:43.138.140.21:3478" }
             ]
         };
