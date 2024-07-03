@@ -94,7 +94,7 @@ function initWebRTC() {
         yourConn.onicecandidate = function (event: any) {
             if (event.candidate) {
                 console.log(event.candidate)
-                socket.MessageCreator.sendCandidate(name,targetUser,event.candidate)
+                candidates.value.push(event.candidate)
                 // websocket.send(JSON.stringify({
                 //     from: currentUserInfo.userName,
                 //     to: isCaller ? currentUserInfo.to : videodata.caller,
@@ -103,6 +103,12 @@ function initWebRTC() {
                 // }));
             }
         };
+        setInterval(()=>{
+            if(candidates.value.length!=0){
+                socket.MessageCreator.sendCandidate(name,targetUser,candidates.value[0])
+                candidates.value.shift();
+            }
+        },1000)
         yourConn.ontrack = function (evt: any) {
             console.log(evt);
             remoteVideo.value!.srcObject = evt.streams[0];
