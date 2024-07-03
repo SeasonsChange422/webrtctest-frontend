@@ -1,5 +1,8 @@
 name: Build and Deploy chatgptui
 
+environment:
+  name: WEBRTC_TEST
+
 on:
   pull_request:
     branches:
@@ -25,7 +28,7 @@ jobs:
         run: npm run build
 
       - name: Log in to Docker Hub
-        run: docker login -u ${{ secrets }} -p ${{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
         run: docker build -t seasonschange422/webrtctest-front .
@@ -36,9 +39,9 @@ jobs:
       - name: SSH into server and deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.WEBRTC_TEST.HOST_ID }}
-          username: ${{ secrets.WEBRTC_TEST.HOST_USERNAME }}
-          password: ${{ secrets.WEBRTC_TEST.HOST_PASSWORD }}
+          host: ${{ secrets.HOST_ID }}
+          username: ${{ secrets.HOST_USERNAME }}
+          password: ${{ secrets.HOST_PASSWORD }}
           script: |
             docker stop CHATWEB || true
             docker rm CHATWEB || true
