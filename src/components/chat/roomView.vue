@@ -74,8 +74,8 @@ function initWebRTC() {
                 // {
                 //     'urls': 'stun:stun.l.google.com:19302'
                 // },
-                // { urls: "stun:43.138.140.21" }
-                // {urls:"turn:turn.wildfirechat.cn:3478",username:"wfchat",credential:"wfchat1"}
+                { urls: "stun:43.138.140.21:3478" },
+                { urls: "turn:43.138.140.21:3478", username: "dhx", credential: "142857" }
             ]
         };
 
@@ -104,12 +104,12 @@ function initWebRTC() {
                 // }));
             }
         };
-        setInterval(()=>{
-            if(candidates.value.length!=0){
-                socket.MessageCreator.sendCandidate(name,targetUser,candidates.value[0])
+        setInterval(() => {
+            if (candidates.value.length != 0) {
+                socket.MessageCreator.sendCandidate(name, targetUser, candidates.value[0])
                 candidates.value.shift();
             }
-        },1000)
+        }, 1000)
         yourConn.ontrack = function (evt: any) {
             console.log(evt);
             remoteVideo.value!.srcObject = evt.streams[0];
@@ -133,7 +133,7 @@ const handleJoin = async function (target) {
     targetUser = target
     let offer = await yourConn.createOffer()
     yourConn.setLocalDescription(offer)
-    console.log("offer:",offer,yourConn.localDescription)
+    console.log("offer:", offer, yourConn.localDescription)
     socket.MessageCreator.sendOffer(name, target, offer)
 }
 const handleOffer = async function (target, offer) {
@@ -145,7 +145,7 @@ const handleOffer = async function (target, offer) {
 const handleAnswer = function (answer) {
     yourConn.setRemoteDescription(new RTCSessionDescription(answer));
 }
-const handleCandidate = async function(candidate) {
+const handleCandidate = async function (candidate) {
     yourConn.addIceCandidate(new RTCIceCandidate(candidate))
 }
 initWebRTC()
