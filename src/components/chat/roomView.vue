@@ -75,7 +75,7 @@ function initWebRTC() {
                 //     'urls': 'stun:stun.l.google.com:19302'
                 // },
                 { urls: "stun:43.138.140.21:3478" },
-                // { urls: "turn:43.138.140.21:3478", username: "dhx", credential: "142857" }
+                { urls: "turn:43.138.140.21:3478", username: "dhx", credential: "142857" }
             ]
         };
 
